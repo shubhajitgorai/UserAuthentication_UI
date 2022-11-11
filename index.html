@@ -53,9 +53,9 @@
                     </div>
                 </div>
 
-                <button class="form__button" id="submitButton" type="button">Submit</button>
+                <input class="form__button" id="submitButton" value="Submit" type="button"/>
                 <p class="form__text linktext">
-                    <a href="#" class="form__link" onclick="forgotPassword()">Forgot your password? Reset password</a>
+                    <a href="#" class="form__link" onclick="forgotPasswordlink()">Forgot your password? Reset password</a>
                 </p>
                 <p class="form__text linktext">
                     <a class="form__link linkToCreateAccount" onclick="createAccountLink()" id="linkCreateAccount">Don't
@@ -66,10 +66,11 @@
         <div id="createAccountContainer" class="hide">
             <h2 class="form__tittle">Create Account</h2>
             <form class="form show--signup" id="createAccount">
+                <p class="hide-error error" id="globalErrorCreate">Username or Password is incorrect!</p>
                 <div class="form__input-group">
                     <div class="loginLabel"><label>Name :</label></div>
                     <div class="loginInput">
-                        <input class="form__input" autofocus placeholder="Name" type="text" pattern="[A-Za-z]{1,32}"
+                        <input id="name" class="form__input" autofocus placeholder="Name" type="text" pattern="[A-Za-z]{1,32}"
                             title="Must be only alphabets" required>
                         <div class="form__input-error-message hide">please provide a name</div>
                     </div>
@@ -77,14 +78,14 @@
                 <div class="form__input-group">
                     <div class="loginLabel"><label>Username :</label></div>
                     <div class="loginInput">
-                        <input class="form__input" autofocus placeholder="Username" type="text" required>
+                        <input id="username" class="form__input" autofocus placeholder="Username" type="text" required>
                         <div class="form__input-error-message hide">please provide a username</div>
                     </div>
                 </div>
                 <div class="form__input-group">
                     <div class="loginLabel"><label>Email :</label></div>
                     <div class="loginInput">
-                        <input class="form__input" autofocus placeholder="email" type="email"
+                        <input id="email" class="form__input" autofocus placeholder="email" type="email"
                             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Must contain a '@' and a '.'"
                             required>
                         <div class="form__input-error-message hide">please provide an email</div>
@@ -93,7 +94,7 @@
                 <div class="form__input-group">
                     <div class="loginLabel"><label>DOB :</label></div>
                     <div class="loginInput">
-                        <input class="form__input" autofocus placeholder="Date of birth" type="date" min="1900-01-01"
+                        <input id="dob" class="form__input" autofocus placeholder="Date of birth" type="date" min="1900-01-01"
                             max="2012-01-01" title="User must be above 10 years of age to fill this form" required>
                         <div class="form__input-error-message hide">please provide date of birth</div>
                     </div>
@@ -101,7 +102,7 @@
                 <div class="form__input-group">
                     <div class="loginLabel"><label>Phone Number :</label></div>
                     <div class="loginInput">
-                        <input class="form__input" autofocus placeholder="phone number" type="tel" pattern="[0-9]{10}"
+                        <input id="phonenumber" class="form__input" autofocus placeholder="phone number" type="tel" pattern="[0-9]{10}"
                             title="Must be only numbers of 10 digits" required>
                         <div class="form__input-error-message hide">please provide a phone number</div>
                     </div>
@@ -109,7 +110,7 @@
                 <div class="form__input-group">
                     <div class="loginLabel"><label>Password :</label></div>
                     <div class="loginInput">
-                        <input class="form__input" autofocus placeholder="Password" type="password"
+                        <input id="pass" class="form__input" autofocus placeholder="Password" type="password"
                             pattern="(?=.*[!@#$%^&*+`~=?\|>/](?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6}"
                             title="Must contain at least one number and one uppercase and lowercase letter and one special character, and at least 6 more characters"
                             required>
@@ -119,14 +120,14 @@
                 <div class="form__input-group">
                     <div class="loginLabel"><label>Confirm Password :</label></div>
                     <div class="loginInput">
-                        <input class="form__input" autofocus placeholder="Confirm Password" type="password"
+                        <input id="confirmpassword" class="form__input" autofocus placeholder="Confirm Password" type="password"
                             pattern="(?=.*[!@#$%^&*+`~=?\|>/](?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6}"
                             title="Must contain at least one number and one uppercase and lowercase letter and one special character, and at least 6 or more characters"
                             required>
                         <div class="form__input-error-message hide">password must be of 10 characters</div>
                     </div>
                 </div>
-                <button class="form__button" id="createButton" type="submit">Submit</button>
+                <input class="form__button" id="createAccountButton" value="Submit" type="button"/>
                 <p class="form__text">
                     <a class="form__link" id="linkLogin" onclick="alreadyHaveAccount()">Already have an account? Sign
                         In</a>
@@ -139,11 +140,11 @@
                 <div class="form__input-group">
                     <div class="loginLabel"><label>Email :</label></div>
                     <div class="loginInput">
-                        <input class="form__input" autofocus placeholder="Username or email" type="email"
+                        <input class="form__input" id="emailId" autofocus placeholder="Username or email" type="email"
                             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Must contain a '@' and a '.'"
                             required>
                     </div>
-                    <button class="form__button forgotemail" id="submitButton" type="submit">Send Mail</button>
+                    <input class="form__button forgotemail" id="submitForgetButton" value="Send mail" type="button"/>
                     <p class="form__text">
                         <a class="form__link" id="linkLogin" onclick="alreadyHaveAccount()">Already have an account?
                             Sign In</a>
@@ -158,25 +159,13 @@
                 <div class="form__input-group">
                     <div class="loginLabel"><label>Enter your OTP Code here :</label></div>
                     <div class="loginInput">
-                        <input type="text" maxlength="1">
-                        <input type="text" maxlength="1">
-                        <input type="text" maxlength="1">
-                        <input type="text" maxlength="1">
-                        <input type="text" maxlength="1">
-                        <input type="text" maxlength="1">
+                        <input id="otp" type="text" maxlength="6">
                     </div>
-                    <button class="form__link" id="resetpassword"
-                            onclick="resetPassword()">Verify</button>
                 </div>
-            </form>
-        </div>
-        <div id="resetPasswordContainer" class="hide">
-            <h2 class="form__title">Reset Password</h2>
-            <form class="form" id="resetpassword">
                 <div class="form__input-group">
                     <div class="loginLabel"><label>Password :</label></div>
                     <div class="loginInput">
-                        <input class="form__input" autofocus placeholder="Password" type="password"
+                        <input class="form__input" id="password" autofocus placeholder="Password" type="password"
                             pattern="(?=.*[!@#$%^&*+`~=?\|>/](?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6}"
                             title="Must contain at least one number and one uppercase and lowercase letter and one special character, and at least 6 more characters"
                             required>
@@ -186,16 +175,14 @@
                 <div class="form__input-group">
                     <div class="loginLabel"><label>Confirm Password :</label></div>
                     <div class="loginInput">
-                        <input class="form__input" autofocus placeholder="Confirm Password" type="password"
+                        <input class="form__input" id="passwordconf" autofocus placeholder="Confirm Password" type="password"
                             pattern="(?=.*[!@#$%^&*+`~=?\|>/](?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6}"
                             title="Must contain at least one number and one uppercase and lowercase letter and one special character, and at least 6 or more characters"
                             required>
                         <div class="form__input-error-message hide">password must be of 10 characters</div>
-                        <center>
-                            <button type="submit">Reset Password</button>
-                        </center>
                     </div>
                 </div>
+                <input class="form__button" id="submitResetPassButton" value="Reset Password" type="button"/>
             </form>
         </div>
     </div>

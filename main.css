@@ -167,10 +167,15 @@ a#linkLogin, a#linkLogin:hover {
     border: none;
     border-radius: var(--border-radius);
     outline: none;
-    background: var(--color-primary);
+    background: #15137f;
+    cursor: pointer;
+}
+#submitResetButton{
+    cursor: pointer;
+    margin-top: 20px;
 }
 .form__button:hover {
-    background: var(--color-primary-dark);
+    background: #15137f;
 }
 .form__button:active {
     transform: scale(0.98);
@@ -224,9 +229,6 @@ a#linkLogin, a#linkLogin:hover {
 #otpverification .loginInput {
     width: 52%;
     margin-bottom: 20px;
-}
-#otpverification .loginInput input {
-    width: 11%;
 }
 #otpverification p a , #otpverification p a:hover{
     color: #fff;
