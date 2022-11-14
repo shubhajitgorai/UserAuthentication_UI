@@ -3,6 +3,7 @@ const createAccountWrapper = document.getElementById('createAccountContainer');
 const forgotPasswordWrapper = document.getElementById('forgetPasswordContainer');
 const otpVerifyWrapper = document.getElementById('otpVerificationContainer');
 let forgotPasswordEmailId = '';
+let loginResponse = '';
 
 let captcha = document.getElementById('textBox').value;
 
@@ -53,6 +54,7 @@ function login() {
             'usernameOrEmail' : username,'password': pass}),
         contentType: 'application/json; charset=utf-8', // ConentType that your are sending. No contentType needed if you just posting as query string parameters.
         success: function(response){
+                loginResponse = response.user;
                 loginWrapper.classList.add('hide');
                 createAccountWrapper.classList.add('hide');
                 forgotPasswordWrapper.classList.add('hide');
@@ -101,7 +103,7 @@ function forgotPassword() {
             'email' : useremail}),
         contentType: 'application/json', // ConentType that your are sending. No contentType needed if you just posting as query string parameters.
         success: function(response){
-
+            forgotPasswordEmailId = response.emailId;
             otpVerifyWrapper.classList.remove('hide');
             forgotPasswordWrapper.classList.add('hide');
             loginWrapper.classList.add('hide');
@@ -119,9 +121,9 @@ function otpverification() {
     let confpass = document.getElementById('passwordconf').value;
     $.ajax({
         url: 'http://localhost:8080/api/auth/otpValidation',
-        type: 'POST',
+        type: 'POST',s
         data : JSON.stringify({
-            'otp' : otp,'password' : pass,'email' : confpass}),
+            'otp' : otp,'password' : pass,'email' : forgotPasswordEmailId}),
         contentType: 'application/json', // ConentType that your are sending. No contentType needed if you just posting as query string parameters.
         success: function(response){
             otpVerifyWrapper.classList.add('hide');
