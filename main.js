@@ -72,7 +72,7 @@ function createAccount() {
     let useremail = document.getElementById('email').value;
     let dateofbirth = document.getElementById('dob').value;
     let phone = document.getElementById('phonenumber').value;
-    let pass = document.getElementById('pass').value;
+    let pass = document.getElementById('passwordCreate').value;
     let confirmpass = document.getElementById('confirmpassword').value;
 
     $.ajax({
@@ -118,10 +118,10 @@ function forgotPassword() {
 function otpverification() {
     let otp = document.getElementById('otp').value;    
     let pass = document.getElementById('password').value;
-    let confpass = document.getElementById('passwordconf').value;
+    let confpass = document.getElementById('emailResetForm').value;
     $.ajax({
         url: 'http://localhost:8080/api/auth/otpValidation',
-        type: 'POST',s
+        type: 'POST',
         data : JSON.stringify({
             'otp' : otp,'password' : pass,'email' : forgotPasswordEmailId}),
         contentType: 'application/json', // ConentType that your are sending. No contentType needed if you just posting as query string parameters.
@@ -149,7 +149,7 @@ let output = document.querySelector('#output');
 let refreshButton = document.querySelector('#refreshButton');
 let createAccountButton = document.querySelector('#createAccountButton');
 let submitForgetButton = document.querySelector('#submitForgetButton');
-let submitResetPassButton = document.querySelector('#submitResetPassButton');
+let submitResetButton = document.querySelector('#submitResetButton');
 
 
 // alphaNums contains the characters with which you want to create the CAPTCHA
@@ -211,7 +211,7 @@ createAccountButton.addEventListener('click', function() {
 submitForgetButton.addEventListener('click', function(){
     forgotPassword();
 });
-submitResetPassButton.addEventListener('click', function() {
+submitResetButton.addEventListener('click', function() {
     otpverification();
 });
 
