@@ -2,6 +2,7 @@ const loginWrapper = document.getElementById('loginContainer');
 const createAccountWrapper = document.getElementById('createAccountContainer');
 const forgotPasswordWrapper = document.getElementById('forgetPasswordContainer');
 const otpVerifyWrapper = document.getElementById('otpVerificationContainer');
+let forgotPasswordEmailId = '';
 
 let captcha = document.getElementById('textBox').value;
 
@@ -100,6 +101,7 @@ function forgotPassword() {
             'email' : useremail}),
         contentType: 'application/json', // ConentType that your are sending. No contentType needed if you just posting as query string parameters.
         success: function(response){
+
             otpVerifyWrapper.classList.remove('hide');
             forgotPasswordWrapper.classList.add('hide');
             loginWrapper.classList.add('hide');
