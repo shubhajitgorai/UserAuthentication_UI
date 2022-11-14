@@ -123,7 +123,7 @@ function otpverification() {
         url: 'http://localhost:8080/api/auth/otpValidation',
         type: 'POST',
         data : JSON.stringify({
-            'otp' : otp,'password' : pass,'email' : forgotPasswordEmailId}),
+            'otp' : otp,'password' : pass,'email' : confpass}),
         contentType: 'application/json', // ConentType that your are sending. No contentType needed if you just posting as query string parameters.
         success: function(response){
             otpVerifyWrapper.classList.add('hide');
